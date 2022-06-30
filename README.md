@@ -11,3 +11,7 @@ Now you can modify the multiplier by running the game once after you updated the
 After that, right click you game in Steam library &rarr; Manage &rarr; Browse local files.
 In `settings/increasedStackSize/settings.cfg`, modify `multiplier=5` to any number you like.
 Example: `multiplier=10` 
+
+
+## Notes:
+*Game have to be restarted for the changes to be made on the stack size.*

@@ -45,7 +45,7 @@ public class ConfigLoader {
         while((line = br.readLine())!= null) {
             if (line.length() != 0) {
                 String[] temp = line.split("=");
-                if (Objects.equals(temp[0], "multiplier")) config = new Config(Integer.parseInt(temp[1]));
+                if (Objects.equals(temp[0], "multiplier")) config.setMultiplier(Integer.parseInt(temp[1]));
             }
         }
     }

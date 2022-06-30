@@ -15,6 +15,6 @@ public class Config {
     }
 
     public void setMultiplier(int newValue) {
-        multiplier = newValue;
+        multiplier = Math.max(newValue, 1);
     }
 }
