@@ -9,6 +9,7 @@ import java.util.Objects;
 
 public class ConfigLoader {
     public static void loadConfig(String filename) {
+        System.out.println("Loading config...");
         filename = GlobalData.rootPath() + "/settings/increasedStackSize/" + filename;
         try {
             File file = new File(filename);
