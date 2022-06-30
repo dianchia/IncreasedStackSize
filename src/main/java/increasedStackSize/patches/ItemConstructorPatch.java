@@ -1,5 +1,6 @@
 package increasedStackSize.patches;
 
+import necesse.engine.commands.CommandsManager;
 import necesse.engine.modLoader.annotations.ModConstructorPatch;
 import necesse.inventory.item.Item;
 import net.bytebuddy.asm.Advice;
