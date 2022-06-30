@@ -1,6 +1,7 @@
 package increasedStackSize;
 
 public class Config {
+    private boolean isInitialized = false;
     private int multiplier;
 
     public Config() {
@@ -16,5 +17,10 @@ public class Config {
 
     public void setMultiplier(int newValue) {
         multiplier = Math.max(newValue, 1);
+        isInitialized = true;
+    }
+
+    public boolean isInitialized() {
+        return isInitialized;
     }
 }
