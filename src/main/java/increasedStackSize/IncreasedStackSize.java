@@ -6,7 +6,7 @@ import necesse.engine.modLoader.annotations.ModEntry;
 public class IncreasedStackSize {
 
     public void init() {
-        System.out.println("Hello world from my example mod!");
+        System.out.println("Loading Increased Stack Size mod... Enjoy!");
     }
 
     public void initResources() {
