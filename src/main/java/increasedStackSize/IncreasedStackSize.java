@@ -1,6 +1,5 @@
 package increasedStackSize;
 
-import increasedStackSize.patches.ItemConstructorPatch;
 import necesse.engine.modLoader.annotations.ModEntry;
 
 @ModEntry
