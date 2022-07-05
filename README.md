@@ -17,3 +17,13 @@ Example: `multiplier=10`.
 - Game have to be **restarted** for the changes to be made on the stack size.
 - If you decrease the multiplier, **DO NOT** sort your inventory or any chest as you will lose the item that has stack size more than current maximum stack size.
 Instead, drop the item on the ground and pick it up again.
+
+## GitHub
+Bugs can be reported to [here](https://github.com/dianchia/IncreasedStackSize/issues)
+
+## Collection
+- [Defense Tower](https://github.com/dianchia/DefenseTower)
+- [Faster Path](https://github.com/dianchia/FasterPath)
+- [Hide Settlers Armor](https://github.com/dianchia/HideSettlersArmor)
+- [Increased Stack Size](https://github.com/dianchia/IncreasedStackSize)
+- [Vanilla Path +](https://github.com/dianchia/VanillaPathPlus)
