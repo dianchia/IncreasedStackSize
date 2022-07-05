@@ -1,5 +1,6 @@
 package increasedStackSize.patches;
 
+import increasedStackSize.Config;
 import increasedStackSize.IncreasedStackSize;
 import necesse.engine.modLoader.annotations.ModMethodPatch;
 import necesse.inventory.item.Item;
@@ -13,12 +14,12 @@ public class ItemGetStackSizePatch {
     }
 
     @Advice.OnMethodExit
-    static void onExit(@Advice.This Item thisItem, @Advice.FieldValue(value = "stackSize")int originalStackSize, @Advice.Return(readOnly = false)int stackSize) {
-        if (IncreasedStackSize.config.isBlacklisted(thisItem)) {
+    static void onExit(@Advice.This Item thisItem, @Advice.FieldValue(value = "stackSize") int originalStackSize, @Advice.Return(readOnly = false) int stackSize) {
+        if (Config.isBlacklisted(thisItem)) {
 //            System.out.println("Skipping " + thisItem + " as it is of class " + thisItem.getClass());
             stackSize = originalStackSize;
         } else {
-            stackSize = originalStackSize * IncreasedStackSize.config.getMultiplier();
+            stackSize = originalStackSize * IncreasedStackSize.stackSizeMultiplier;
         }
     }
 }

@@ -1,0 +1,3 @@
+[increasedstacksize]
+changedwarning=§6<name> changed stack size to <stacksize>. Changes will be applied on next server restart.
+errorsmaller=Stack size multiplier cannot be smaller than one
