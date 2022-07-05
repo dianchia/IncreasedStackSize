@@ -35,8 +35,4 @@ Bugs can be reported to [here](https://github.com/dianchia/IncreasedStackSize/is
 
 ## Collection
 
-- [Defense Tower](https://github.com/dianchia/DefenseTower)
-- [Faster Path](https://github.com/dianchia/FasterPath)
-- [Hide Settlers Armor](https://github.com/dianchia/HideSettlersArmor)
-- [Increased Stack Size](https://github.com/dianchia/IncreasedStackSize)
-- [Vanilla Path +](https://github.com/dianchia/VanillaPathPlus)
+[Collection](https://steamcommunity.com/sharedfiles/filedetails/?id=2830016047)
