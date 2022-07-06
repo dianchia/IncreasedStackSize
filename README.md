@@ -35,4 +35,4 @@ Bugs can be reported to [here](https://github.com/dianchia/IncreasedStackSize/is
 
 ## Collection
 
-[Collection](https://steamcommunity.com/sharedfiles/filedetails/?id=2830016047)
+[Here](https://steamcommunity.com/sharedfiles/filedetails/?id=2830016047) are a few mod I wrote
