@@ -1,6 +1,7 @@
 package increasedStackSize;
 
 import increasedStackSize.commands.ChangeStackSizeCommand;
+import increasedStackSize.commands.GetStackSizeCommand;
 import necesse.engine.commands.CommandsManager;
 import necesse.engine.modLoader.annotations.ModEntry;
 
@@ -41,6 +42,7 @@ public class IncreasedStackSize {
 
     public void postInit() {
         CommandsManager.registerServerCommand(new ChangeStackSizeCommand());
+        CommandsManager.registerServerCommand(new GetStackSizeCommand());
         System.out.println("Loaded Increased Stack Size mod... Enjoy!");
     }
 
