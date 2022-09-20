@@ -15,10 +15,9 @@ public class ItemInventoryAddItemPatch {
     }
 
     @Advice.OnMethodExit
-    static void onExit(@Advice.This Item thisItem, @Advice.AllArguments Object[] args, @Advice.Return(readOnly = false)boolean success) {
+    static void onExit(@Advice.This Item thisItem, @Advice.AllArguments Object[] args, @Advice.Return(readOnly = false) boolean success) {
         success = (boolean) args[5]
                 && thisItem.canCombineItem((Level) args[0], (PlayerMob) args[1], (InventoryItem) args[2], (InventoryItem) args[3], (String) args[4])
                 && thisItem.onCombine((Level) args[0], (PlayerMob) args[1], (InventoryItem) args[2], (InventoryItem) args[3], (int) args[6], ((InventoryItem) args[3]).getAmount(), (String) args[4]);
     }
-
 }

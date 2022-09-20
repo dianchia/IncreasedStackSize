@@ -27,14 +27,6 @@ public class IncreasedStackSize {
     }
 
     public void init() {
-//        ItemRegistry.registerItem("stacksizecontroller", new StackSizeControllerItem(1), 10, true);
-//        STACKSIZE_CONTROLLER_CONTAINER = ContainerRegistry.registerContainer(
-//                (client, uniqueSeed, content) -> new StackSizeControllerContainerForm<>(client, new StackSizeControllerContainer(client.getClient(), uniqueSeed, content)),
-//                (client, uniqueSeed, content, serverObj) -> new StackSizeControllerContainer(client, uniqueSeed, content));
-//
-//        Recipes.registerModRecipe(new Recipe("stacksizecontroller", 1, RecipeTechRegistry.NONE, new Ingredient[]{
-//                new Ingredient("anylog", 1)
-//        }));
     }
 
     public void initResources() {
