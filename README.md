@@ -27,6 +27,10 @@ This mod needs to be downloaded for both host and client if playing in multiplay
   size more than current maximum stack size.
   Instead, drop the item on the ground and pick it up again.
 
+## Changelog:
+
+- 2022/09/20 - Updated the mod to game version 0.21.24
+
 _Disclaimer: The mod author is not responsible to any item lost due to incorrect usage of this mod_
 
 ## GitHub
