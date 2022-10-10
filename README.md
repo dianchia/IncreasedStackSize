@@ -1,8 +1,8 @@
 # Mod Information
 
-Mod version: 1.0.2
+Mod version: 1.0.5
 
-Game version: 0.21.23
+Game version: 0.21.25
 
 # Increased Stack Size
 
@@ -20,16 +20,17 @@ Please only give this permission to someone you trust.
 
 This mod needs to be downloaded for both host and client if playing in multiplayer.
 
-## Important Notes:
+## Important Notes
 
 - Game have to be **restarted** for the changes to be made on the stack size.
 - If you decrease the multiplier, **DO NOT** sort your inventory or any chest as you will lose the item that has stack
   size more than current maximum stack size.
   Instead, drop the item on the ground and pick it up again.
 
-## Changelog:
+## Changelog
 
-- 2022/09/20 - Updated the mod to game version 0.21.24
+- v1.0.4 - Updated the mod to game version 0.21.24
+- v1.0.5 - Updated to game version 0.21.25
 
 _Disclaimer: The mod author is not responsible to any item lost due to incorrect usage of this mod_
 
