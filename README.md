@@ -1,8 +1,8 @@
 # Mod Information
 
-Mod version: 1.0.5
+Mod version: 1.0.6
 
-Game version: 0.21.25
+Game version: 0.21.26
 
 # Increased Stack Size
 
@@ -12,8 +12,8 @@ This is the perfect mod for you!
 
 ## Setting the multiplier
 
-To set the multiplier, run the command "/setstacksizemultiplier" in the game.
-**Note that you can only run this command if you have permission higher or equals to "OWNER"**
+To set the multiplier, run the command "/setstacksizemultiplier" in the game.\
+**Note that you can only run this command if you have permission higher or equals to "OWNER"**\
 Please only give this permission to someone you trust.
 
 ## Multiplayer
@@ -31,6 +31,7 @@ This mod needs to be downloaded for both host and client if playing in multiplay
 
 - v1.0.4 - Updated the mod to game version 0.21.24
 - v1.0.5 - Updated to game version 0.21.25
+- v1.0.6 - Updated to game version 0.21.26
 
 _Disclaimer: The mod author is not responsible to any item lost due to incorrect usage of this mod_
 
