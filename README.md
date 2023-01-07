@@ -32,6 +32,7 @@ This mod needs to be downloaded for both host and client if playing in multiplay
 - v1.0.4 - Updated the mod to game version 0.21.24
 - v1.0.5 - Updated to game version 0.21.25
 - v1.0.6 - Updated to game version 0.21.26
+- v1.0.7 - Updated to game version 0.21.27
 
 _Disclaimer: The mod author is not responsible to any item lost due to incorrect usage of this mod_
 

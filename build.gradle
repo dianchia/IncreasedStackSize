@@ -7,8 +7,8 @@ plugins {
 
 project.ext.modID = "dianchia.increasedstacksize" // The unique id of your mod. Must be all lowercase and cannot use special characters.
 project.ext.modName = "Increased Stack Size" // The display name of your mod.
-project.ext.modVersion = "1.0.6" // Your current builds version. Must follow the xx.xx... format.
-project.ext.gameVersion = "0.21.26" // The target game version.
+project.ext.modVersion = "1.0.7" // Your current builds version. Must follow the xx.xx... format.
+project.ext.gameVersion = "0.21.27" // The target game version.
 project.ext.modDescription = "Increased Stack Size for all item" // Short description of what your mod is.
 project.ext.author = "dianchia" // Your name
 
@@ -28,7 +28,8 @@ project.ext.clientside = false
 //project.ext.modOptionalDependencies = ["optional.modid1", "optional.modid2"]
 
 // The path to the games install directory
-def gameDirectory = "C:/Program Files (x86)/Steam/steamapps/common/Necesse"
+//def gameDirectory = "C:/Program Files (x86)/Steam/steamapps/common/Necesse"
+def gameDirectory = "D:/SteamLibrary/steamapps/common/Necesse"
 
 // =================================================
 // ========== DO NOT EDIT BELOW THIS LINE ==========
