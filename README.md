@@ -1,8 +1,8 @@
 # Mod Information
 
-Mod version: 1.0.8
+Mod version: 1.0.9
 
-Game version: 0.21.28
+Game version: 0.21.29
 
 # Increased Stack Size
 
@@ -34,6 +34,7 @@ This mod needs to be downloaded for both host and client if playing in multiplay
 - v1.0.6 - Updated to game version 0.21.26
 - v1.0.7 - Updated to game version 0.21.27
 - v1.0.8 - Updated to game version 0.21.28
+- v1.0.9 - Updated to game version 0.21.29
 
 _Disclaimer: The mod author is not responsible to any item lost due to incorrect usage of this mod_
 
