@@ -19,6 +19,7 @@ public class ChangeStackSizeCommand extends ModularChatCommand {
 
     @Override
     public void runModular(Client client, Server server, ServerClient serverClient, Object[] args, String[] errors, CommandLog commandLog) {
+        commandLog.add(Localization.translate("increasedstacksize", "newcommand"));
         int newStackSize = (int) args[0];
         if (newStackSize > 0) {
             String name = serverClient == null ? "Server" : serverClient.playerMob.getDisplayName();

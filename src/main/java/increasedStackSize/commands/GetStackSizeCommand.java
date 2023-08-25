@@ -16,6 +16,7 @@ public class GetStackSizeCommand extends ModularChatCommand {
 
     @Override
     public void runModular(Client client, Server server, ServerClient serverClient, Object[] objects, String[] strings, CommandLog commandLog) {
+        commandLog.add(Localization.translate("increasedstacksize", "newcommand"));
         commandLog.add(Localization.translate("increasedstacksize", "getstacksize", "stacksize", IncreasedStackSize.stackSizeMultiplier));
     }
 }

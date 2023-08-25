@@ -1,4 +1,5 @@
 [increasedstacksize]
 changedwarning=§6<name> changed stack size to <stacksize>. Changes will be applied on next server restart.
-errorsmaller=Stack size multiplier cannot be smaller than one
+errorsmaller=Stack size multiplier not provided or smaller than one
 getstacksize=Current stack size multiplier is: <stacksize>
+newcommand=New and shorter command available now --> "stacksize get/set [stacksize]"
