@@ -16,7 +16,7 @@ public class ItemGetStackSizePatch {
     @Advice.OnMethodExit
     static void onExit(@Advice.This Item thisItem, @Advice.FieldValue(value = "stackSize") int originalStackSize, @Advice.Return(readOnly = false) int stackSize) {
         if (Config.isBlacklisted(thisItem)) {
-//            System.out.println("Skipping " + thisItem + " as it is of class " + thisItem.getClass());
+//            GameLog.debug.println("Skipping " + thisItem + " as it is of class " + thisItem.getClass());
             stackSize = originalStackSize;
         } else {
             stackSize = originalStackSize * IncreasedStackSize.stackSizeMultiplier;
