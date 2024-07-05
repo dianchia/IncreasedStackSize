@@ -41,8 +41,13 @@ This mod needs to be downloaded for both host and client if playing in multiplay
 - v1.1.0 - Updated to game version 0.22.0, new command is available now.
 - v1.1.1 - Boomerangs is now **not** affected by the stack size multiplier.
 - v1.1.2 - Updated to game version 0.24.0
+- v1.1.3 - Updated to game version 0.25.1. Fixed items with different enchantment can be stacked.
 
 _Disclaimer: The mod author is not responsible to any item lost due to incorrect usage of this mod_
+
+## Known Bugs
+
+- A stack of items can be enchanted with a single scroll.
 
 ## GitHub
 

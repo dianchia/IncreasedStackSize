@@ -1,6 +1,7 @@
 package increasedStackSize.patches;
 
 import increasedStackSize.IncreasedStackSize;
+import necesse.engine.GameLog;
 import necesse.engine.modLoader.annotations.ModMethodPatch;
 import necesse.engine.network.PacketReader;
 import necesse.engine.world.WorldSettings;
@@ -11,7 +12,7 @@ public class WorldSettingsApplyContentPacketPatch {
     @Advice.OnMethodExit
     static void onExit(@Advice.Argument(0) PacketReader reader) {
         int newStackSize = reader.getNextInt();
-        System.out.println("New stack size from packet = " + newStackSize);
+        GameLog.debug.println("New stack size from packet = " + newStackSize);
         IncreasedStackSize.setStackSizeMultiplier(newStackSize, true);
     }
 }
