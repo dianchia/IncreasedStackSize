@@ -21,21 +21,21 @@ public class ItemIsSameItemPatch {
     static void onExit(@Advice.This Item thisItem, @Advice.Argument(1) InventoryItem me, @Advice.Argument(2) InventoryItem them, @Advice.Argument(3) String purpose, @Advice.Return(readOnly = false) boolean isSame) {
         if (thisItem != them.item) {
             isSame = false;
-            return;
         }
-
-        GameLog.debug.println("Purpose: " + purpose);
-        isSame = true;
-        if (thisItem.isEnchantable(me) && them.item.isEnchantable(them)) {
-            if (ArmorItem.class.isAssignableFrom(thisItem.getClass())) {
-                isSame = ((ArmorItem) thisItem).getEnchantment(me) == ((ArmorItem) them.item).getEnchantment(them);
-                GameLog.debug.println("ArmorItem: is same = " + isSame);
-            } else if (ToolItem.class.isAssignableFrom(thisItem.getClass())) {
-                isSame = ((ToolItem) thisItem).getEnchantment(me) == ((ToolItem) them.item).getEnchantment(them);
-                GameLog.debug.println("ToolItem: is same = " + isSame);
-            } else if (TrinketItem.class.isAssignableFrom(thisItem.getClass())) {
-                isSame = ((TrinketItem) thisItem).getEnchantment(me) == ((TrinketItem) them.item).getEnchantment(them);
-                GameLog.debug.println("TrinketItem: is same = " + isSame);
+        else {
+            GameLog.debug.println("Purpose: " + purpose);
+            isSame = true;
+            if (thisItem.isEnchantable(me) && them.item.isEnchantable(them)) {
+                if (ArmorItem.class.isAssignableFrom(thisItem.getClass())) {
+                    isSame = ((ArmorItem) thisItem).getEnchantment(me) == ((ArmorItem) them.item).getEnchantment(them);
+                    GameLog.debug.println("ArmorItem: is same = " + isSame);
+                } else if (ToolItem.class.isAssignableFrom(thisItem.getClass())) {
+                    isSame = ((ToolItem) thisItem).getEnchantment(me) == ((ToolItem) them.item).getEnchantment(them);
+                    GameLog.debug.println("ToolItem: is same = " + isSame);
+                } else if (TrinketItem.class.isAssignableFrom(thisItem.getClass())) {
+                    isSame = ((TrinketItem) thisItem).getEnchantment(me) == ((TrinketItem) them.item).getEnchantment(them);
+                    GameLog.debug.println("TrinketItem: is same = " + isSame);
+                }
             }
         }
     }

@@ -1,8 +1,8 @@
 # Mod Information
 
-Mod version: 1.1.2
+Mod version: 1.1.9
 
-Game version: 0.24.0
+Game version: 0.31.1
 
 # Increased Stack Size
 
@@ -42,6 +42,12 @@ This mod needs to be downloaded for both host and client if playing in multiplay
 - v1.1.1 - Boomerangs is now **not** affected by the stack size multiplier.
 - v1.1.2 - Updated to game version 0.24.0
 - v1.1.3 - Updated to game version 0.25.1. Fixed items with different enchantment can be stacked.
+- v1.1.4 - Attempt to fix items with different tier can be stacked together.
+- v1.1.5 - Updated to game version 0.26.0
+- v1.1.6 - Updated to game version 0.26.1
+- v1.1.7 - Updated to game version 0.27.0
+- v1.1.8 - Updated to game version 0.29.0
+- v1.1.9 - Updated to game version 0.31.1
 
 _Disclaimer: The mod author is not responsible to any item lost due to incorrect usage of this mod_
 
