@@ -17,6 +17,8 @@ public class ItemGetStackSizePatch {
     static void onExit(@Advice.This Item thisItem, @Advice.FieldValue(value = "stackSize") int originalStackSize, @Advice.Return(readOnly = false) int stackSize) {
         if (!Config.isBlacklisted(thisItem)) {
             stackSize = originalStackSize * IncreasedStackSize.stackSizeMultiplier;
+        } else {
+            stackSize = originalStackSize;
         }
     }
 }

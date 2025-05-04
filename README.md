@@ -1,8 +1,8 @@
 # Mod Information
 
-Mod version: 1.1.9
+Mod version: 1.1.11
 
-Game version: 0.31.1
+Game version: 0.32.1
 
 # Increased Stack Size
 
@@ -48,6 +48,8 @@ This mod needs to be downloaded for both host and client if playing in multiplay
 - v1.1.7 - Updated to game version 0.27.0
 - v1.1.8 - Updated to game version 0.29.0
 - v1.1.9 - Updated to game version 0.31.1
+- v1.1.10 - Updated to game version 0.32.1
+- v1.1.11 - Fixed game crashing when sorting inventory with boomerangs or pouches.
 
 _Disclaimer: The mod author is not responsible to any item lost due to incorrect usage of this mod_
 
