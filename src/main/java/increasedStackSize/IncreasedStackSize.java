@@ -23,7 +23,6 @@ public class IncreasedStackSize {
     }
 
     public void preInit() {
-        System.out.println("Checking for backward compatibility...");
         Compat.backwardCompatLoad();
     }
 
@@ -37,7 +36,6 @@ public class IncreasedStackSize {
         CommandsManager.registerServerCommand(new ChangeStackSizeCommand());
         CommandsManager.registerServerCommand(new GetStackSizeCommand());
         CommandsManager.registerServerCommand(new StackSizeCommand());
-        System.out.println("Loaded Increased Stack Size mod... Enjoy!");
     }
 
 }

@@ -22,7 +22,7 @@ public class Compat {
 
             String line;
             while ((line = br.readLine()) != null) {
-                if (line.length() != 0) {
+                if (!line.isEmpty()) {
                     String[] temp = line.split("=");
                     if (Objects.equals(temp[0], "multiplier"))
                         IncreasedStackSize.setStackSizeMultiplier(Integer.parseInt(temp[1]), true);
@@ -30,7 +30,7 @@ public class Compat {
             }
             br.close();
             isr.close();
-            file.delete();
+            boolean success = file.delete();
         } catch (IOException ignored) {
         }
     }

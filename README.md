@@ -50,6 +50,7 @@ This mod needs to be downloaded for both host and client if playing in multiplay
 - v1.1.9 - Updated to game version 0.31.1
 - v1.1.10 - Updated to game version 0.32.1
 - v1.1.11 - Fixed game crashing when sorting inventory with boomerangs or pouches.
+- v1.2.0 - Updated to game version 1.0.1
 
 _Disclaimer: The mod author is not responsible to any item lost due to incorrect usage of this mod_
 
