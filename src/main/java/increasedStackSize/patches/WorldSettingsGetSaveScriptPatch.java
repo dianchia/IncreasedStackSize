@@ -10,6 +10,6 @@ import net.bytebuddy.asm.Advice;
 public class WorldSettingsGetSaveScriptPatch {
     @Advice.OnMethodExit
     static void onExit(@Advice.Return(readOnly = false) SaveData save) {
-        save.addInt("stackSizeMultiplier", IncreasedStackSize.newStackSizeMultiplier);
+        IncreasedStackSize.settings.addSaveData(save);
     }
 }

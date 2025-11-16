@@ -1,6 +1,5 @@
 package increasedStackSize.patches;
 
-import increasedStackSize.Config;
 import increasedStackSize.IncreasedStackSize;
 import necesse.engine.modLoader.annotations.ModMethodPatch;
 import necesse.inventory.item.Item;
@@ -15,10 +14,7 @@ public class ItemGetStackSizePatch {
 
     @Advice.OnMethodExit
     static void onExit(@Advice.This Item thisItem, @Advice.FieldValue(value = "stackSize") int originalStackSize, @Advice.Return(readOnly = false) int stackSize) {
-        if (!Config.isBlacklisted(thisItem)) {
-            stackSize = originalStackSize * IncreasedStackSize.stackSizeMultiplier;
-        } else {
-            stackSize = originalStackSize;
-        }
+        int mul = IncreasedStackSize.settings.getMultiplier(thisItem.getClass().getSimpleName());
+        stackSize = originalStackSize * mul;
     }
 }

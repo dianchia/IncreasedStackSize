@@ -10,8 +10,6 @@ import net.bytebuddy.asm.Advice;
 public class WorldSettingsLoadSaveScriptPatch {
     @Advice.OnMethodExit
     static void onExit(@Advice.Argument(0) LoadData save) {
-        if (save.hasLoadDataByName("stackSizeMultiplier")) {
-            IncreasedStackSize.setStackSizeMultiplier(save.getInt("stackSizeMultiplier"), true);
-        }
+        IncreasedStackSize.settings.applyLoadData(save);
     }
 }
