@@ -1,0 +1,217 @@
+/* -------------------------------------------------------
+   Global Layout
+------------------------------------------------------- */
+
+body {
+    margin: 0;
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    background-color: #fafafa;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background: white;
+    padding: 1.5rem 2rem 2.5rem 2rem;
+    border-bottom: 1px solid #e5e5e5;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+    margin-top: 1rem;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #202020;
+    text-align: center;
+}
+
+/* -------------------------------------------------------
+   Navigation
+------------------------------------------------------- */
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #444;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+    color: #0078d4;
+}
+
+/* -------------------------------------------------------
+   Content Containers
+------------------------------------------------------- */
+
+p {
+    text-align: center;
+    margin: 2rem 0 1rem;
+    font-size: 1.1rem;
+    color: #444;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.search-container input {
+    width: 350px;
+    max-width: 80%;
+    padding: 0.65rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+.search-container input:focus {
+    outline: none;
+    border-color: #0078d4;
+    box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.15);
+}
+
+.result-count {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #555;
+    font-weight: 500;
+    font-size: 1.05rem;
+}
+
+/* -------------------------------------------------------
+   Item List
+------------------------------------------------------- */
+
+.item-list {
+    width: min(900px, 90%);
+    margin: 0 auto 3rem;
+}
+
+.loading,
+.error {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+    color: #777;
+}
+
+/* -------------------------------------------------------
+   Item Card (parent)
+------------------------------------------------------- */
+
+.item {
+    background: white;
+    margin: 1rem 0;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+}
+
+.item-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 1rem;
+}
+
+/* -------------------------------------------------------
+   Class Name Cards
+------------------------------------------------------- */
+
+.classnames-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.classname-card {
+    background: #f5f7fa;
+    padding: 0.55rem 0.85rem;
+    border-radius: 8px;
+    border: 1px solid #dcdcdc;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.95rem;
+    position: relative;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.classname-card:hover {
+    background: #eef3ff;
+    border-color: #b7ceff;
+}
+
+/* -------------------------------------------------------
+   Copy Button
+------------------------------------------------------- */
+
+.copy-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 3px;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+}
+
+.copy-btn:hover {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.copy-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: #666;
+    transition: fill 0.2s ease;
+}
+
+.copy-btn:hover svg {
+    fill: #0078d4;
+}
+
+.copy-btn.copied svg {
+    fill: #2ecc71 !important;
+}
+
+/* -------------------------------------------------------
+   Mobile Responsive
+------------------------------------------------------- */
+
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .item {
+        padding: 1.2rem;
+    }
+
+    .item-name {
+        font-size: 1.1rem;
+    }
+}

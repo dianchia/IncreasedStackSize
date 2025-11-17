@@ -1,8 +1,8 @@
 # Mod Information
 
-Mod version: 1.1.11
+Mod version: 1.2.0
 
-Game version: 0.32.1
+Game version: 1.0.1
 
 # Increased Stack Size
 
@@ -30,28 +30,6 @@ This mod needs to be downloaded for both host and client if playing in multiplay
   size more than current maximum stack size.
   Instead, drop the item on the ground and pick it up again.
 
-## Changelog
-
-- v1.0.4 - Updated the mod to game version 0.21.24
-- v1.0.5 - Updated to game version 0.21.25
-- v1.0.6 - Updated to game version 0.21.26
-- v1.0.7 - Updated to game version 0.21.27
-- v1.0.8 - Updated to game version 0.21.28
-- v1.0.9 - Updated to game version 0.21.29
-- v1.1.0 - Updated to game version 0.22.0, new command is available now.
-- v1.1.1 - Boomerangs is now **not** affected by the stack size multiplier.
-- v1.1.2 - Updated to game version 0.24.0
-- v1.1.3 - Updated to game version 0.25.1. Fixed items with different enchantment can be stacked.
-- v1.1.4 - Attempt to fix items with different tier can be stacked together.
-- v1.1.5 - Updated to game version 0.26.0
-- v1.1.6 - Updated to game version 0.26.1
-- v1.1.7 - Updated to game version 0.27.0
-- v1.1.8 - Updated to game version 0.29.0
-- v1.1.9 - Updated to game version 0.31.1
-- v1.1.10 - Updated to game version 0.32.1
-- v1.1.11 - Fixed game crashing when sorting inventory with boomerangs or pouches.
-- v1.2.0 - Updated to game version 1.0.1
-
 _Disclaimer: The mod author is not responsible to any item lost due to incorrect usage of this mod_
 
 ## Known Bugs
@@ -65,3 +43,6 @@ Bugs can be reported to [here](https://github.com/dianchia/IncreasedStackSize/is
 ## Collection
 
 [Here](https://steamcommunity.com/sharedfiles/filedetails/?id=2830016047) are a few mod I wrote
+
+## Support me :coffee:
+The mods are created without any profit motive, but if you like the mod, consider [buy me a coffee?](https://buymeacoffee.com/dianrui520y)

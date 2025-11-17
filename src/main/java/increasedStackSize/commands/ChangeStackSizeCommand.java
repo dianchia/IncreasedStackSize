@@ -1,6 +1,5 @@
 package increasedStackSize.commands;
 
-import increasedStackSize.IncreasedStackSize;
 import necesse.engine.commands.CmdParameter;
 import necesse.engine.commands.CommandLog;
 import necesse.engine.commands.ModularChatCommand;
@@ -25,7 +24,7 @@ public class ChangeStackSizeCommand extends ModularChatCommand {
             String name = serverClient == null ? "Server" : serverClient.playerMob.getDisplayName();
             String message = Localization.translate("increasedstacksize", "changedwarning", "name", name, "stacksize", newStackSize);
             server.network.sendToAllClients(new PacketChatMessage(message));
-            IncreasedStackSize.setStackSizeMultiplier(newStackSize, false);
+//            IncreasedStackSize.setStackSizeMultiplier(newStackSize, false);
         } else {
             commandLog.add(Localization.translate("increasedstacksize", "errorsmaller"));
         }

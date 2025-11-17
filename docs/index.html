@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Increased Stack Size</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.1.0"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="http://github.com/dianchia/IncreasedStackSize" target="_blank"
+                        rel="noopener noreferrer">GitHub Repository</a></li>
+                <li><a href="https://github.com/dianchia/Necesse-Mods" target="_blank" rel="noopener noreferrer">Other
+                        Mods</a></li>
+        </nav>
+        <h1>Increased Stack Size</h1>
+    </header>
+
+    <p>Search for items by their in-game name or prefix with `#` to search by class name:</p>
+    <div class="search-container">
+        <label for="searchInput"></label>
+        <input id="searchInput" placeholder="Gold Pickaxe, Ghost Boots, #Fish, etc." type="text">
+    </div>
+    <div id="resultCount" class="result-count"></div>
+    <div id="itemList" class="item-list">
+        <div class="loading">Loading...</div>
+    </div>
+
+    <script>
+        async function loadItems() {
+            try {
+                const resp = await fetch("items.csv");
+                const text = await resp.text();
+                return parseItems(text);
+            } catch (error) {
+                console.error("Error loading CSV:", error);
+                document.getElementById("itemList").innerHTML =
+                    '<div class="error">Error loading item data. Please try again later.</div>';
+                return [];
+            }
+        }
+
+        function parseItems(text) {
+            const lines = text.split('\n').filter(line => line.trim() !== '');
+            const items = [];
+            for (let i = 0; i < lines.length; i++) {
+                const values = lines[i].split(',').map(value => value.trim());
+                const classNames = values[1].split(';').map(value => value.trim()).filter(value => value !== "");
+                items.push({ displayName: values[0], classNames: classNames })
+            }
+            return items;
+        }
+
+        function fuzzySearch(items, query) {
+            // if (!query || typeof query !== "string") return items;
+
+            const isClassQuery = query.startsWith("#");
+            const cleanQuery = isClassQuery ? query.slice(1) : query;
+
+            const options = {
+                includeScore: true,
+                threshold: 0.3,
+                keys: [isClassQuery ? 'classNames' : 'displayName'],
+            };
+            const fuse = new Fuse(items, options);
+            const result = fuse.search(cleanQuery)
+
+            return result
+                .map(res => res.item)
+                .sort((a, b) => {
+                    const scoreA = result.find(r => r.item === a).score;
+                    const scoreB = result.find(r => r.item === b).score;
+                    return scoreA - scoreB;
+                });
+        }
+
+        function handleCopyClick(button, className) {
+            const originalText = className;
+            navigator.clipboard.writeText(className).then(() => {
+                button.classList.add("copied");
+            }).catch(err => alert("Failed to copy class name to clipboard: " + err));
+            setTimeout(() => {
+                button.classList.remove("copied");
+            }, 1200);
+        }
+
+        function renderItems(items, searchTerm = '') {
+            const container = document.getElementById('itemList');
+            const count = document.getElementById('resultCount');
+
+            const filteredItems = fuzzySearch(items, searchTerm);
+            console.log(filteredItems);
+            count.textContent = `Found ${filteredItems.length} items`;
+            if (filteredItems.length === 0) {
+                container.innerHTML = '<div class="item error">No items found matching your search.</div>'
+                return;
+            }
+
+            container.innerHTML = filteredItems.map(item => `
+            <div class="item">
+                <div class="item-name">${item.displayName}</div>
+                <div class="classnames-container">
+                    ${item.classNames.map(className => `
+                    <div class="classname-card">
+                        ${className}
+                        <button class="copy-btn" onclick="handleCopyClick(this, '${className}')">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z"/></svg>
+                        </button>
+                    </div>
+                `).join('')}
+                </div>
+            </div>
+        `).join('');
+        }
+
+        async function init() {
+            const items = await loadItems();
+
+            document.getElementById('searchInput').addEventListener("input", function (e) {
+                renderItems(items, e.target.value);
+            });
+
+            // Initial render
+            renderItems(items);
+        }
+
+        init();
+    </script>
+
+</body>
+
+</html>

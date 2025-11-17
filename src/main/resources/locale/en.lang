@@ -1,5 +1,6 @@
 [increasedstacksize]
-changedwarning=§6<name> changed stack size to <stacksize>. Changes will be applied on next server restart.
-errorsmaller=Stack size multiplier not provided or smaller than one
-getstacksize=Current stack size multiplier is: <stacksize>
-newcommand=New and shorter command available now --> "stacksize get/set [stacksize]"
+multiplierschanged=§#EED49FStack size multiplier for `<name>` changed to <multiplier>
+multipliersunset=§#A6da95Successfully unset stack size for `<name>`
+errorsmaller=§ED8796Stack size multiplier cannot be smaller than 0
+nomultiplier=§ED8796Multiplier not specified
+itemnotfound=§ED8796Item with name `<name>` not found
