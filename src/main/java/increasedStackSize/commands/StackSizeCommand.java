@@ -38,6 +38,10 @@ public class StackSizeCommand extends ModularChatCommand {
     }
 
     private void getStackSize(Object[] args, CommandLog log) {
+        log.add("§#8AADF4========================");
+        log.add("§#8AADF4= Increased Stack Size =");
+        log.add("§#8AADF4========================");
+
         if (args[1] != null) {
             String name = (String) args[1];
             if (IncreasedStackSize.settings.resolveClass(name) == null) {
@@ -46,10 +50,10 @@ public class StackSizeCommand extends ModularChatCommand {
             }
 
             int multiplier = IncreasedStackSize.settings.getMultiplier(name);
-            log.add(name + ": " + multiplier);
+            log.add("§#8AADF4" + name + ": " + multiplier);
         } else {
             Map<String, Integer> multipliers = IncreasedStackSize.settings.getMultipliers();
-            multipliers.forEach((name, mul) -> log.add(name + ": " + mul));
+            multipliers.forEach((name, mul) -> log.add("§#8AADF4" + name + ": " + mul));
         }
     }
 
@@ -72,7 +76,7 @@ public class StackSizeCommand extends ModularChatCommand {
         }
         IncreasedStackSize.settings.setMultiplier(name, multiplier);
 
-        server.network.sendToAllClients(new PacketChatMessage(Localization.translate("increasedstacksize", "changedwarning", "name", name, "multiplier", multiplier)));
+        server.network.sendToAllClients(new PacketChatMessage(Localization.translate("increasedstacksize", "multiplierschanged", "name", name, "multiplier", multiplier)));
         server.network.sendToAllClients(new PacketReadServerSettings(false));
     }
 
@@ -86,6 +90,7 @@ public class StackSizeCommand extends ModularChatCommand {
             return;
         }
 
+        log.add(Localization.translate("increasedstacksize", "multipliersunset", "name", name));
         IncreasedStackSize.settings.unsetMultiplier(name);
         server.network.sendToAllClients(new PacketReadServerSettings(false));
     }

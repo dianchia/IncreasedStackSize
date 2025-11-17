@@ -1,5 +1,6 @@
 [increasedstacksize]
-changedwarning=§#FFDE59Stack size multiplier for `<name>` changed to <multiplier>
-errorsmaller=§6Stack size multiplier cannot be smaller than 0
-nomultiplier=§6Multiplier not specified
-itemnotfound=§6Item with name `<name>` not found
+multiplierschanged=§#EED49FStack size multiplier for `<name>` changed to <multiplier>
+multipliersunset=§#A6da95Successfully unset stack size for `<name>`
+errorsmaller=§ED8796Stack size multiplier cannot be smaller than 0
+nomultiplier=§ED8796Multiplier not specified
+itemnotfound=§ED8796Item with name `<name>` not found

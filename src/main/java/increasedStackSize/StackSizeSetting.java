@@ -44,7 +44,7 @@ public class StackSizeSetting extends ModSettings {
 
         // Check if file exists before trying to read
         if (!Files.exists(configPath)) {
-            GameLog.debug.println("[IncreasedStackSize] No config file found. Default to a multiplier of " + DEFAULT_MULTIPLIER + " for all items");
+            GameLog.out.println("[IncreasedStackSize] No config file found. Default to a multiplier of " + DEFAULT_MULTIPLIER + " for all items");
             return;
         }
 
@@ -68,7 +68,6 @@ public class StackSizeSetting extends ModSettings {
         String className = comps[0].trim();
         String multiplierStr = comps[1].trim();
         try {
-//            Class.forName(className);
             if (resolveClass(className) == null) {
                 GameLog.warn.println("Item `" + className + "` not found.");
                 return;
@@ -144,7 +143,7 @@ public class StackSizeSetting extends ModSettings {
 
     @Override
     public void addSaveData(SaveData save) {
-        save.addSafeString("IncreasedStackSize", StackSizeSetting.mapToString(this.multipliers));
+        save.addSafeString("IncreasedStackSize", mapToString(this.multipliers));
     }
 
     @Override
@@ -153,7 +152,7 @@ public class StackSizeSetting extends ModSettings {
         if (save.hasLoadDataByName("stackSizeMultiplier")) {
             this.multipliers.put("Item", save.getInt("stackSizeMultiplier"));
         } else if (save.hasLoadDataByName("IncreasedStackSize")) {
-            this.multipliers = StackSizeSetting.mapFromString(save.getSafeString("IncreasedStackSize"));
+            this.multipliers = mapFromString(save.getSafeString("IncreasedStackSize"));
         }
     }
 
