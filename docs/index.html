@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Increased Stack Size</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.1.0"></script>
 </head>
 
 <body>
@@ -20,10 +22,10 @@
         <h1>Increased Stack Size</h1>
     </header>
 
-    <p>Search for items by their in-game name:</p>
+    <p>Search for items by their in-game name or prefix with `#` to search by class name:</p>
     <div class="search-container">
-        <label for="searchInput">Search:</label>
-        <input id="searchInput" placeholder="Search for items (e.g. 'Gold Pickaxe', 'Ghost Boots', etc.)" type="text">
+        <label for="searchInput"></label>
+        <input id="searchInput" placeholder="Gold Pickaxe, Ghost Boots, #Fish, etc." type="text">
     </div>
     <div id="resultCount" class="result-count"></div>
     <div id="itemList" class="item-list">
@@ -55,23 +57,27 @@
             return items;
         }
 
-        // Simple fuzzy search
-        function fuzzySearch(text, searchTerm) {
-            if (!searchTerm) return false;
+        function fuzzySearch(items, query) {
+            // if (!query || typeof query !== "string") return items;
 
-            const searchLower = searchTerm.toLowerCase();
-            const textLower = text.toLowerCase();
+            const isClassQuery = query.startsWith("#");
+            const cleanQuery = isClassQuery ? query.slice(1) : query;
 
-            let searchIndex = 0;
-            for (let i = 0; i < textLower.length; i++) {
-                if (textLower[i] === searchLower[searchIndex]) {
-                    searchIndex++;
-                }
-                if (searchIndex === searchLower.length) {
-                    return true;
-                }
-            }
-            return false;
+            const options = {
+                includeScore: true,
+                threshold: 0.3,
+                keys: [isClassQuery ? 'classNames' : 'displayName'],
+            };
+            const fuse = new Fuse(items, options);
+            const result = fuse.search(cleanQuery)
+
+            return result
+                .map(res => res.item)
+                .sort((a, b) => {
+                    const scoreA = result.find(r => r.item === a).score;
+                    const scoreB = result.find(r => r.item === b).score;
+                    return scoreA - scoreB;
+                });
         }
 
         function handleCopyClick(button, className) {
@@ -88,7 +94,8 @@
             const container = document.getElementById('itemList');
             const count = document.getElementById('resultCount');
 
-            const filteredItems = items.filter(item => fuzzySearch(item.displayName, searchTerm));
+            const filteredItems = fuzzySearch(items, searchTerm);
+            console.log(filteredItems);
             count.textContent = `Found ${filteredItems.length} items`;
             if (filteredItems.length === 0) {
                 container.innerHTML = '<div class="item error">No items found matching your search.</div>'
