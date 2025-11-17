@@ -44,5 +44,5 @@ Bugs can be reported to [here](https://github.com/dianchia/IncreasedStackSize/is
 
 [Here](https://steamcommunity.com/sharedfiles/filedetails/?id=2830016047) are a few mod I wrote
 
-## Support me
+## Support me :coffee:
 The mods are created without any profit motive, but if you like the mod, consider [buy me a coffee?](https://buymeacoffee.com/dianrui520y)
