@@ -13,18 +13,18 @@ import necesse.engine.network.server.ServerClient;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PacketReadServerSettings extends Packet {
+public class PacketReadServerMultipliers extends Packet {
     Map<String, Integer> newSettings = new HashMap<>();
 
     // Required for the registry
-    public PacketReadServerSettings(byte[] data) {
+    public PacketReadServerMultipliers(byte[] data) {
         super(data);
         PacketReader reader = new PacketReader(this);
         if (!reader.getNextBoolean())
             newSettings = StackSizeSetting.mapFromString(reader.getNextString());
     }
 
-    public PacketReadServerSettings(boolean fromClient) {
+    public PacketReadServerMultipliers(boolean fromClient) {
         PacketWriter writer = new PacketWriter(this);
         writer.putNextBoolean(fromClient);
         if (!fromClient)
@@ -39,6 +39,6 @@ public class PacketReadServerSettings extends Packet {
     @Override
     public void processServer(NetworkPacket packet, Server server, ServerClient client) {
         if (client.checkHasRequestedSelf())
-            client.sendPacket(new PacketReadServerSettings(false));
+            client.sendPacket(new PacketReadServerMultipliers(false));
     }
 }

@@ -1,6 +1,6 @@
 package increasedStackSize.patches;
 
-import increasedStackSize.packets.PacketReadServerSettings;
+import increasedStackSize.packets.PacketReadServerMultipliers;
 import necesse.engine.modLoader.annotations.ModMethodPatch;
 import necesse.engine.network.client.Client;
 import necesse.engine.network.client.ClientClient;
@@ -11,6 +11,6 @@ public class ClientClientApplySpawnedPatch {
     @Advice.OnMethodExit
     static void onExit(@Advice.FieldValue(value = "client") Client client) {
         if (client.getPlayer() != null)
-            client.network.sendPacket(new PacketReadServerSettings(true));
+            client.network.sendPacket(new PacketReadServerMultipliers(true));
     }
 }

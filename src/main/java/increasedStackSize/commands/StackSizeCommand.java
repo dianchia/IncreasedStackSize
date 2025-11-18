@@ -1,7 +1,7 @@
 package increasedStackSize.commands;
 
 import increasedStackSize.IncreasedStackSize;
-import increasedStackSize.packets.PacketReadServerSettings;
+import increasedStackSize.packets.PacketReadServerMultipliers;
 import necesse.engine.commands.CmdParameter;
 import necesse.engine.commands.CommandLog;
 import necesse.engine.commands.ModularChatCommand;
@@ -77,7 +77,7 @@ public class StackSizeCommand extends ModularChatCommand {
         IncreasedStackSize.settings.setMultiplier(name, multiplier);
 
         server.network.sendToAllClients(new PacketChatMessage(Localization.translate("increasedstacksize", "multiplierschanged", "name", name, "multiplier", multiplier)));
-        server.network.sendToAllClients(new PacketReadServerSettings(false));
+        server.network.sendToAllClients(new PacketReadServerMultipliers(false));
     }
 
     private void unsetStackSize(Server server, Object[] args, CommandLog log) {
@@ -92,6 +92,6 @@ public class StackSizeCommand extends ModularChatCommand {
 
         log.add(Localization.translate("increasedstacksize", "multipliersunset", "name", name));
         IncreasedStackSize.settings.unsetMultiplier(name);
-        server.network.sendToAllClients(new PacketReadServerSettings(false));
+        server.network.sendToAllClients(new PacketReadServerMultipliers(false));
     }
 }

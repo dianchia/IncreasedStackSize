@@ -1,7 +1,7 @@
 package increasedStackSize;
 
 import increasedStackSize.commands.StackSizeCommand;
-import increasedStackSize.packets.PacketReadServerSettings;
+import increasedStackSize.packets.PacketReadServerMultipliers;
 import necesse.engine.commands.CommandsManager;
 import necesse.engine.modLoader.ModSettings;
 import necesse.engine.modLoader.annotations.ModEntry;
@@ -20,7 +20,7 @@ public class IncreasedStackSize {
     }
 
     public void init() {
-        PacketRegistry.registerPacket(PacketReadServerSettings.class);
+        PacketRegistry.registerPacket(PacketReadServerMultipliers.class);
     }
 
     public void initResources() {
