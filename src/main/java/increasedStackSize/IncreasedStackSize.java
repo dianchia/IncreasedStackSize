@@ -1,7 +1,5 @@
 package increasedStackSize;
 
-import increasedStackSize.commands.ChangeStackSizeCommand;
-import increasedStackSize.commands.GetStackSizeCommand;
 import increasedStackSize.commands.StackSizeCommand;
 import increasedStackSize.packets.PacketReadServerSettings;
 import necesse.engine.commands.CommandsManager;
@@ -29,8 +27,6 @@ public class IncreasedStackSize {
     }
 
     public void postInit() {
-        CommandsManager.registerServerCommand(new ChangeStackSizeCommand());
-        CommandsManager.registerServerCommand(new GetStackSizeCommand());
         CommandsManager.registerServerCommand(new StackSizeCommand());
 
 //        Set<String> items = new HashSet<>();

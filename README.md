@@ -11,10 +11,11 @@ Wish to increase the stack size of items?
 This is the perfect mod for you!
 
 ## Increased Stack Size 2.0 Released :exclamation: :exclamation:
+
 In November 2025, a whole new version of Increased Stack Size is released!
 Let us welcome the Increased Stack Size 2.0! :tada: :tada:
 
-Well, what's new in this version you might ask? 
+Well, what's new in this version you might ask?
 Roll the drum please... :drum:
 
 **PER-CLASS STACK SIZE MULTIPLIER!!!**
@@ -33,9 +34,21 @@ Just visit [here](https://dianchia.github.io/IncreasedStackSize) and you are goo
 ## Setting the multiplier
 
 ### Version 2.x
-Two commands are provided, the `/stacksize set <classname> <multiplier>` and `/stacksize get [classname]`.
+
+Three commands are provided.
+
+```
+/stacksize set <classname> <multiplier>
+/stacksize get [classname]
+/stacksize unset <classname>
+```
+
 `/stacksize set` command requires the `classname` and `multiplier` arguments,
 whereas `/stacksize get` will return all multipliers set if no arguments are provided.
+As for the unset command, `classname` is required. This command unsets the multiplier for the specified item,
+causing the item to inherit multiplier from its parent class.
+
+**Global Configuration**
 Optionally, a `IncreasedStackSize.cfg` file can be used for setting a global multiplier across all saved world.
 If you're on steam, just right-clicking on your game, then `Manage > Browse local files`, create a `settings` directory
 if not exists, and create a `IncreasedStackSize.cfg` in the directory.
@@ -44,9 +57,11 @@ If you want to set a multiplier for all items in the game, use `Item=<multiplier
 or `/stacksize set Item <multiplier>` command in the game.
 
 ### Version 1.x
+
 Two commands are provided, `/stacksize set <multiplier>` and `/stacksize get`.
 
 ### Version 0.x
+
 To set the multiplier, run the command "/setstacksizemultiplier" in the game.
 
 **Note that you can only run this command if you have permission higher or equals to "OWNER"**\
@@ -77,4 +92,6 @@ Bugs can be reported to [here](https://github.com/dianchia/IncreasedStackSize/is
 [Here](https://steamcommunity.com/sharedfiles/filedetails/?id=2830016047) are a few mod I wrote
 
 ## Support me :coffee:
-The mods are created without any profit motive, but if you like the mod, consider [buy me a coffee?](https://buymeacoffee.com/dianrui520y)
+
+The mods are created without any profit motive, but if you like the mod,
+consider [buy me a coffee?](https://buymeacoffee.com/dianrui520y)
