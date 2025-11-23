@@ -1,11 +1,13 @@
 package increasedStackSize.commands;
 
 import increasedStackSize.IncreasedStackSize;
+import increasedStackSize.SettingType;
 import increasedStackSize.packets.PacketReadServerMultipliers;
 import necesse.engine.commands.CmdParameter;
 import necesse.engine.commands.CommandLog;
 import necesse.engine.commands.ModularChatCommand;
 import necesse.engine.commands.PermissionLevel;
+import necesse.engine.commands.parameterHandlers.EnumParameterHandler;
 import necesse.engine.commands.parameterHandlers.IntParameterHandler;
 import necesse.engine.commands.parameterHandlers.PresetStringParameterHandler;
 import necesse.engine.commands.parameterHandlers.StringParameterHandler;
@@ -15,11 +17,15 @@ import necesse.engine.network.packet.PacketChatMessage;
 import necesse.engine.network.server.Server;
 import necesse.engine.network.server.ServerClient;
 
-import java.util.Map;
+import java.util.*;
 
 public class StackSizeCommand extends ModularChatCommand {
     public StackSizeCommand() {
-        super("stacksize", "Commands for configuring stack size multiplier", PermissionLevel.OWNER, false, new CmdParameter("get/set/unset", new PresetStringParameterHandler("get", "set", "unset"), false), new CmdParameter("name", new StringParameterHandler(), true, new CmdParameter("multiplier", new IntParameterHandler(null), true)));
+        super("stacksize", "Commands for configuring stack size multiplier", PermissionLevel.OWNER, false,
+                new CmdParameter("get/set/unset", new PresetStringParameterHandler("get", "set", "unset"), false),
+                new CmdParameter("world/global", new EnumParameterHandler<>(SettingType.WORLD, SettingType.values()), true),
+                new CmdParameter("name", new StringParameterHandler(), true, new CmdParameter("multiplier", new IntParameterHandler(null), true))
+        );
     }
 
     @Override
@@ -41,57 +47,73 @@ public class StackSizeCommand extends ModularChatCommand {
         log.add("§#8AADF4========================");
         log.add("§#8AADF4= Increased Stack Size =");
         log.add("§#8AADF4========================");
+        log.add("§#EED49Fname: world (global)");
 
-        if (args[1] != null) {
-            String name = (String) args[1];
+        if (args[2] != null) {
+            String name = (String) args[2];
             if (IncreasedStackSize.settings.resolveClass(name) == null) {
                 log.add(Localization.translate("increasedstacksize", "itemnotfound", "name", name));
                 return;
             }
 
-            int multiplier = IncreasedStackSize.settings.getMultiplier(name);
-            log.add("§#8AADF4" + name + ": " + multiplier);
+            int worldValue = IncreasedStackSize.settings.getMultipliers(SettingType.WORLD).getOrDefault(name, 1);
+            int globalValue = IncreasedStackSize.settings.getMultipliers(SettingType.GLOBAL).getOrDefault(name, 1);
+            log.add("§#8AADF4" + name + ": " + worldValue + " (" + globalValue + ")");
         } else {
-            Map<String, Integer> multipliers = IncreasedStackSize.settings.getMultipliers();
-            multipliers.forEach((name, mul) -> log.add("§#8AADF4" + name + ": " + mul));
+            Map<String, Integer> globalMultipliers = IncreasedStackSize.settings.getMultipliers(SettingType.GLOBAL);
+            Map<String, Integer> worldMultipliers = IncreasedStackSize.settings.getMultipliers(SettingType.WORLD);
+
+            Set<String> names = new TreeSet<>();
+            names.addAll(globalMultipliers.keySet());
+            names.addAll(worldMultipliers.keySet());
+            List<String> sorted = new ArrayList<>(names);
+            Collections.sort(sorted);
+
+            for (String name : sorted) {
+                int worldValue = worldMultipliers.getOrDefault(name, 1);
+                int globalValue = globalMultipliers.getOrDefault(name, 1);
+                log.add("§#8AADF4" + name + ": " + worldValue + " (" + globalValue + ")");
+            }
         }
     }
 
     private void setStackSize(Server server, Object[] args, CommandLog log) {
-        if (args[2] == null) {
+        if (args[3] == null) {
             log.add(Localization.translate("increasedstacksize", "nomultiplier"));
             return;
         }
+        int multiplier = (int) args[3];
+        if (multiplier < 1) {
+            log.add(Localization.translate("increasedstacksize", "errorsmaller"));
+            return;
+        }
 
-        String name = args[1] == null ? "Item" : (String) args[1];
+        String name = args[2] == null ? "Item" : (String) args[2];
         if (IncreasedStackSize.settings.resolveClass(name) == null) {
             log.add(Localization.translate("increasedstacksize", "itemnotfound", "name", name));
             return;
         }
 
-        int multiplier = (int) args[2];
-        if (multiplier <= 0) {
-            log.add(Localization.translate("increasedstacksize", "errorsmaller"));
-            return;
-        }
-        IncreasedStackSize.settings.setMultiplier(name, multiplier);
+        SettingType type = (SettingType) args[1];
+        IncreasedStackSize.settings.setMultiplier(name, multiplier, type);
 
         server.network.sendToAllClients(new PacketChatMessage(Localization.translate("increasedstacksize", "multiplierschanged", "name", name, "multiplier", multiplier)));
         server.network.sendToAllClients(new PacketReadServerMultipliers(false));
     }
 
     private void unsetStackSize(Server server, Object[] args, CommandLog log) {
-        if (args[1] == null)
+        if (args[2] == null)
             return;
 
-        String name = (String) args[1];
+        String name = (String) args[2];
         if (IncreasedStackSize.settings.resolveClass(name) == null) {
             log.add(Localization.translate("increasedstacksize", "itemnotfound", "name", name));
             return;
         }
 
+        SettingType type = (SettingType) args[1];
+        IncreasedStackSize.settings.unsetMultiplier(name, type);
         log.add(Localization.translate("increasedstacksize", "multipliersunset", "name", name));
-        IncreasedStackSize.settings.unsetMultiplier(name);
         server.network.sendToAllClients(new PacketReadServerMultipliers(false));
     }
 }

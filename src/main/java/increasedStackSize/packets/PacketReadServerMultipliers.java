@@ -1,6 +1,7 @@
 package increasedStackSize.packets;
 
 import increasedStackSize.IncreasedStackSize;
+import increasedStackSize.SettingType;
 import increasedStackSize.StackSizeSetting;
 import necesse.engine.network.NetworkPacket;
 import necesse.engine.network.Packet;
@@ -33,7 +34,7 @@ public class PacketReadServerMultipliers extends Packet {
 
     @Override
     public void processClient(NetworkPacket packet, Client client) {
-        IncreasedStackSize.settings.setMultipliers(newSettings);
+        IncreasedStackSize.settings.setMultipliers(newSettings, SettingType.WORLD);
     }
 
     @Override
