@@ -1,6 +1,6 @@
 # Mod Information
 
-Mod version: 2.0.2
+Mod version: 2.1.0
 
 Game version: 1.0.2
 
@@ -22,7 +22,7 @@ Roll the drum please... :drum:
 
 Now, you can set a separate multiplier for each class!
 Want your stone to have a multiplier of 10 but not your pickaxe? I got you covered!
-Just use the command `/stacksize set world StonePlaceableItem 10` and `/stacksize set world PickaxeToolItem 1`.
+Just use the command `/stacksize set StonePlaceableItem 10` and `/stacksize set PickaxeToolItem 1`.
 The settings are world-based, so you have to set them for each world... right?
 **Nope**, global settings can be configured by editing the file `dianchia.increasedstacksize.cfg` located at
 `%APPDATA%\Necesse\cfg\mods` for Windows and `.config/Necesse/cfg/mods` for Linux.
@@ -36,18 +36,21 @@ Just visit [here](https://dianchia.github.io/IncreasedStackSize) and you are goo
 
 ### Version 2.x
 
-Three commands are provided for **server admin.**
+Three commands are provided for **admin**, a.k.a., the one with **OWNER** permission.
 
 ```
-/stacksize set <world/global> <classname> <multiplier>
+/stacksize set [world/global] <classname> <multiplier>
 /stacksize get [world/global] [classname]
 /stacksize unset [world/global] <classname>
 ```
 
-- `/stacksize set`: `world/global`, `classname` and `multiplier` arguments are required.
+- `/stacksize set`: `classname` and `multiplier` arguments are required.
 - `/stacksize get`: returns all multipliers set if no arguments are provided.
 - `/stacksize unset`: `classname` is required. This command unsets the multiplier for the specified item,
   causing the item to inherit the multiplier from its parent class.
+
+To set a multiplier **globally**, use `/stacksize set global <classname> <multiplier>`.
+For example, `/stacksize set global CoinPouch 1`.
 
 As for **normal users**, there's only one command provided.
 
@@ -61,7 +64,7 @@ This command returns the stack size set for the specified item, or all items if 
 
 **Global Configuration**
 
-Optionally, `dianchia.increasedstacksize.cfg` can be used to configure the stack size globally.
+Optionally, a config file can be used to configure the stack size globally.
 If you're on Windows, navigate to `%APPDATA%\Necesse\cfg\mods` to find the file.
 On Linux, you can find it under `.config/Necesse/cfg/mods`.
 The file `dianchia.increasedstacksize.cfg` should already be created if you've played the game with this mod enabled.
@@ -71,13 +74,13 @@ Below is an example of the content of the file. Copy it into the file and modify
 ```text
 {
 	SETTINGS = {
-		IncreasedStackSize = necesse.inventory.item.miscItem.CoinPouch:1;necesse.inventory.item.Item:5
+		IncreasedStackSize = Item:5;CloudInventoryOpenItem:1;necesse.inventory.item.miscItem.CoinPouch:1
 	}
 }
 ```
 
 You can either use a fully qualified name, such as `necesse.inventory.item.Item` or a simple name `Item`.
-The simplified name will be converted to a fully qualified name on game shutdown.
+The simplified name will be converted to a fully qualified name when the configuration is saved by the game.
 Refer to [this website](https://dianchia.github.io/IncreasedStackSize) to find the class an item belongs to.
 
 ---
@@ -101,7 +104,8 @@ This mod needs to be downloaded for both the host and client if playing in multi
 
 ## Important Notes
 
-- If you decrease the multiplier, **DO NOT** sort your inventory or any chest, as you will lose the item that has a stack
+- If you decrease the multiplier, **DO NOT** sort your inventory or any chest, as you will lose the item that has a
+  stack
   size more than the current maximum stack size.
   Instead, drop the item on the ground and pick it up again.
 

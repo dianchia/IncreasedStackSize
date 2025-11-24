@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 
 public class StackSizeCommand extends ModularChatCommand {
     public StackSizeCommand() {
-        super("stacksize", "Commands for configuring stack size multiplier", PermissionLevel.OWNER, false,
+        super("stacksize", "Manage stack size multipliers for items", PermissionLevel.OWNER, false,
                 new CmdParameter("get/set/unset", new PresetStringParameterHandler("get", "set", "unset"), false),
                 new CmdParameter("world/global", new EnumParameterHandler<>(SettingType.WORLD, SettingType.values()), true),
                 new CmdParameter("name", new StringParameterHandler(), true, new CmdParameter("multiplier", new IntParameterHandler(null), true))
