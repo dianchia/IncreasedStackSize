@@ -22,9 +22,10 @@ Roll the drum please... :drum:
 
 Now, you can set separate multiplier for each class!
 Want your stone to have a multiplier of 10 but not your pickaxe? I got you cover!
-Just use the command `/stacksize set StonePlaceableItem 1` and `/stacksize set PickaxeToolItem 1`.
+Just use the command `/stacksize set world StonePlaceableItem 10` and `/stacksize set world PickaxeToolItem 1`.
 The settings are world base, so you have to set it for each world... right?
-**Nope**, a global settings can be configured by including a `settings/IncreasedStackSize.cfg` in your game directory.
+**Nope**, a global settings can be configured by editing the file `dianchia.increasedstacksize.cfg` located at
+`%APPDATA%\Necesse\cfg\mods` for Windows and `.config/Necesse/cfg/mods` for Linux.
 You can refer to [this section](#version-2x) for a detailed explanation on how to set up this configuration file.
 
 But WAIT, how do I know the class name? I only know the in-game display name :confused:
@@ -35,30 +36,57 @@ Just visit [here](https://dianchia.github.io/IncreasedStackSize) and you are goo
 
 ### Version 2.x
 
-Three commands are provided.
+Three commands are provided for **server admin.**
 
 ```
-/stacksize set <classname> <multiplier>
-/stacksize get [classname]
-/stacksize unset <classname>
+/stacksize set <world/global> <classname> <multiplier>
+/stacksize get [world/global] [classname]
+/stacksize unset [world/global] <classname>
 ```
 
-`/stacksize set` command requires the `classname` and `multiplier` arguments,
-whereas `/stacksize get` will return all multipliers set if no arguments are provided.
-As for the unset command, `classname` is required. This command unsets the multiplier for the specified item,
-causing the item to inherit multiplier from its parent class.
+- `/stacksize set`: `world/global`, `classname` and `multiplier` arguments are required.
+- `/stacksize get`: returns all multipliers set if no arguments are provided.
+- `/stacksize unset`: `classname` is required. This command unsets the multiplier for the specified item,
+  causing the item to inherit multiplier from its parent class.
+
+As for **normal users**, there's only one command provided.
+
+```text
+/getstacksize [classname]
+```
+
+This command returns the stack size set for the specified item, or all item if none is specified.
+
+---
 
 **Global Configuration**
-Optionally, a `IncreasedStackSize.cfg` file can be used for setting a global multiplier across all saved world.
-If you're on steam, just right-clicking on your game, then `Manage > Browse local files`, create a `settings` directory
-if not exists, and create a `IncreasedStackSize.cfg` in the directory.
-The format for the file is `classname=multiplier`. For example, `PickaxeToolItem=1`.
-If you want to set a multiplier for all items in the game, use `Item=<multiplier>`,
-or `/stacksize set Item <multiplier>` command in the game.
+
+Optionally, `dianchia.increasedstacksize.cfg` can be used to configure the stack size globally.
+If you're on Windows, navigate to `%APPDATA%\Necesse\cfg\mods` to find the file.
+On Linux, you can find it under `.config/Necesse/cfg/mods`.
+The file `dianchia.increasedstacksize.cfg` should already be created if you've played the game with this mod enabled.
+But if not found, create the file manually, just make sure the name is exactly the same.
+Below is an example for the content of the file, copy it into the file and modify it as you like.
+
+```text
+{
+	SETTINGS = {
+		IncreasedStackSize = necesse.inventory.item.miscItem.CoinPouch:1;necesse.inventory.item.Item:5
+	}
+}
+```
+
+You can either use a fully qualified name such as `necesse.inventory.item.Item` or a simple name `Item`.
+The simplified name will be converted to a fully qualified name on game shutdown.
+Refer to [this website](https://dianchia.github.io/IncreasedStackSize) to find the class an item belongs to.
+
+---
 
 ### Version 1.x
 
 Two commands are provided, `/stacksize set <multiplier>` and `/stacksize get`.
+
+---
 
 ### Version 0.x
 

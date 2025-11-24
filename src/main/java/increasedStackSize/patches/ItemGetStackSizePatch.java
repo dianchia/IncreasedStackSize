@@ -14,7 +14,7 @@ public class ItemGetStackSizePatch {
 
     @Advice.OnMethodExit
     static void onExit(@Advice.This Item thisItem, @Advice.FieldValue(value = "stackSize") int originalStackSize, @Advice.Return(readOnly = false) int stackSize) {
-        int mul = IncreasedStackSize.settings.getMultiplier(thisItem.getClass().getTypeName());
+        int mul = IncreasedStackSize.settings.getMultiplier(thisItem.getClass());
         stackSize = originalStackSize * mul;
     }
 }

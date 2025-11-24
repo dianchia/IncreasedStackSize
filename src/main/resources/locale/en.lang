@@ -3,4 +3,5 @@ multiplierschanged=§#EED49FStack size multiplier for `<name>` changed to <multi
 multipliersunset=§#A6da95Successfully unset stack size for `<name>`
 errorsmaller=§#ED8796Stack size multiplier cannot be smaller than 1
 nomultiplier=§#ED8796Multiplier not specified
+noitemname=§#ED8796Item class not specified
 itemnotfound=§#ED8796Item with name `<name>` not found
